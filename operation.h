@@ -5,9 +5,9 @@
 #include <string>
 
 // A is m *n, B is n *p, C is m *p
-#define line_M 3000
-#define line_N 3000
-#define line_P 3000
+#define line_M 1000
+#define line_N 1000
+#define line_P 1000
 #define array_capacity_A line_M *line_N
 #define array_capacity_B line_N *line_P
 #define array_capacity_C line_M *line_P
@@ -21,7 +21,7 @@ extern int colsB; // colsB must be equal to rowsA
 extern int num;
 extern int gap;
 
-extern double times[line_M / 300];
+extern double times[line_M / 100];
 /*
 extern datatype result[array_capacity_C];
 extern datatype mat1[array_capacity_A];

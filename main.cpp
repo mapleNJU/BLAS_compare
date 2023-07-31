@@ -5,20 +5,21 @@
 
 // #define ENABLE_FUNCTION
 // #define GEN
+// #define COMPUTE_BLAS
 
 int rowsA = line_M;
 int colsA = line_N;
 int rowsB = colsA; // rowsB must be equal to colsA
 int colsB = line_P;
 
-int num = 300;
-int gap = 300;
+int num = 100; // The Matrix Multiplication Size
+int gap = 100; // scale interval per matrix multiplication
 /*
 datatype result[array_capacity_C];
 datatype mat1[array_capacity_A];
 datatype mat2[array_capacity_B];
 */
-double times[line_M / 300];
+double times[line_M / 100];
 
 int main()
 {
@@ -35,6 +36,7 @@ int main()
 #endif
 
     // 读取矩阵并计算
+#ifdef COMPUTE_BLAS
 
     while (num <= line_M)
     {
@@ -69,6 +71,7 @@ int main()
     // Close the file
     outfile.close();
 
+#endif
     std::cout << "complete!" << std::endl;
     return 0;
 }
