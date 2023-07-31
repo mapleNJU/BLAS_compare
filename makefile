@@ -6,7 +6,7 @@ cblas: main.cpp compute.cpp generate_random.cpp reread.cpp
 openblas: main.cpp compute.cpp generate_random.cpp reread.cpp
 	g++ main.cpp generate_random.cpp compute.cpp reread.cpp -o openblas -lopenblas -lpthread -lgfortran -I/~/usr/local/OpenBLAS/include -L/usr/local/OpenBLAS/lib -DENABLE_FUNCTION -DCOMPUTE_BLAS
 	./openblas
-	python3 plot.py 
+
 cublas: main.cpp cublas_compute.cpp generate_random.cpp reread.cpp
 	nvcc main.cpp generate_random.cpp reread.cpp cublas_compute.cpp -lcublas -o cublas -DCOMPUTE_BLAS
 	./cublas
