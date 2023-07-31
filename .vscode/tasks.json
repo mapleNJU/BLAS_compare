@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "main.cpp",
+                "generate_random.cpp",
+                "read_data.cpp",
+                "compute.cpp",
+                "-o",
+                "matrix_ver1"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
