@@ -16,14 +16,23 @@
 
 .
 ├── compute.cpp
+
 ├── cublas_compute.cpp
+
 ├── Data_txt
+
 ├── generate_random.cpp
+
 ├── main.cpp
+
 ├── makefile
+
 ├── operation.h
+
 ├── plot.py
+
 ├── README.md
+
 └── reread.cpp
 
 **compute.cpp** : 用cBLAS方法或者OpenBLAS方法计算矩阵乘法
@@ -61,5 +70,18 @@
 
 ### 实验结果示例：
 
-	
+##### 16000\*16000-float-cBLAS vs cuBLAS vs OpenBLAS:
 
+![16000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/16000_compare.png)
+
+##### 8000\*8000-double-cuBLAS vs OpenBLAS:
+
+![8000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/16000_compare.png)
+
+##### cuBLAS:double vs float:
+
+![cuBLAS_compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/cuBLAS.png)
+
+##### OpenBLAS:double vs float:
+
+![OpenBLAS_compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/openBLAS.png)
