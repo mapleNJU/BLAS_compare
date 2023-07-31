@@ -36,11 +36,17 @@
 └── reread.cpp
 
 **compute.cpp** : 用cBLAS方法或者OpenBLAS方法计算矩阵乘法
+
 **cublas_compute.cpp** : 用cuBLAS方法计算矩阵乘法
+
 **Data_txt** : 存放结果目录
+
 **generate_random.cpp** : 生成随机数并存放至Data_txt目录下
+
 **main.cpp** : 主文件
+
 **makefile** : makefile文件，命令如下：
+
 * make clean : 清除所有可执行目标文件和txt文件
 * make clean-w : 清除所有可执行目标文件
 * make cblas : 用cBLAS方法进行计算
@@ -49,18 +55,20 @@
 * make gen : 生成随机数文件
   
 **operation.h** : 头文件
+
 **plot.py** : 画折线图
+
 **reread.cpp** : 在计算过程中从文件中读取新数据的函数
 
 ### 可以进行修改的参数：
 
 ##### operation.h : 
-   * line_M : 矩阵乘法中A矩阵的行数和C矩阵的行数，但在该程序中不用考虑，因为这是方阵。修改line_M即可修改矩阵乘法的最大规模，如设置为10000即表示从开始计算到10000*10000为止
-	* line_N : 矩阵乘法中A矩阵的列数和B矩阵的行数，但在该程序中用不到
-	* line_P : 矩阵乘法中B矩阵的列数和C矩阵的列数，但在该程序中用不到
-	* datatype : 数据的类型，目前试过float和double两种类型
-		* 特别注意：在修改了datatype之后，要在compute.cpp中和cublas_compute.cpp中修改矩阵乘法的参数，具体为cblas_xgemm/cublasXgemm : 其中X=d表示double型，X=s表示float型
-	* circle_time : 每个大小的矩阵乘法的计算次数
+* line_M : 矩阵乘法中A矩阵的行数和C矩阵的行数，但在该程序中不用考虑，因为这是方阵。修改line_M即可修改矩阵乘法的最大规模，如设置为10000即表示从开始计算到10000*10000为止
+* line_N : 矩阵乘法中A矩阵的列数和B矩阵的行数，但在该程序中用不到
+* line_P : 矩阵乘法中B矩阵的列数和C矩阵的列数，但在该程序中用不到
+* datatype : 数据的类型，目前试过float和double两种类型
+	* 特别注意：在修改了datatype之后，要在compute.cpp中和cublas_compute.cpp中修改矩阵乘法的参数，具体为cblas_xgemm/cublasXgemm : 其中X=d表示double型，X=s表示float型
+* circle_time : 每个大小的矩阵乘法的计算次数
   
 ##### main.cpp :
 * num : 每次矩阵乘法的规模，也可以设置开始时的矩阵乘法规模
