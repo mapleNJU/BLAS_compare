@@ -1,3 +1,0 @@
-wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/adb8a02c-4ee7-4882-97d6-a524150da358/l_onemkl_p_2023.2.0.49497.sh
-
-sudo sh ./l_onemkl_p_2023.2.0.49497.sh
