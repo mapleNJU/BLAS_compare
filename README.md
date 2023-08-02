@@ -10,7 +10,7 @@
 * 内存：16GB
 
 ##### 功能：
-实现了在相同条件下cBLAS, OpenBLAS, cuBLAS在大规模矩阵相乘时的计算时间对比。在float数据类型下，两个16000\*16000的矩阵相乘时，OpenBLAS的计算时间约15.6s, cuBLAS的计算时间约2.3s, 提升了约85%。而在GPU不擅长的double型数据处理中，两个9000\*9000的矩阵相乘时，OpenBLAS的计算时间约为6.0s, cuBLAS的计算时间约为9.3s(如果有好的显卡则运行时间会比OpenBLAS快)。由于cBLAS为单线程处理，在float型3000\*3000的矩阵相乘时运算时间已经达到了11.6s, 此时OpenBLAS运算时间为0.09s,cuBLAS运算时间为0.04s, 所以后续没有测试cBLAS.
+实现了在相同条件下cBLAS, OpenBLAS, cuBLAS, oneMKL在大规模矩阵相乘时的计算时间对比。在float数据类型下，两个16000\*16000的矩阵相乘时，oneMKL计算时间约18.8s，OpenBLAS的计算时间约15.6s, cuBLAS的计算时间约2.3s, 提升了约85%。而在GPU不擅长的double型数据处理中，两个8000\*8000的矩阵相乘时，oneMKL计算时间约为4.6s，OpenBLAS的计算时间约为6.5s, cuBLAS的计算时间约为6.6s(如果有好的显卡则运行时间会比OpenBLAS快)。由于cBLAS为单线程处理，在float型3000\*3000的矩阵相乘时运算时间已经达到了11.6s, 此时OpenBLAS运算时间为0.09s,cuBLAS运算时间为0.04s, 所以后续没有测试cBLAS.
 
 ### 文件
 
@@ -26,6 +26,8 @@
 ├── main.cpp
 
 ├── makefile
+
+├── mkl_compute.cpp
 
 ├── operation.h
 
@@ -52,8 +54,11 @@
 * make cblas : 用cBLAS方法进行计算
 * make openblas : 用OpenBLAS方法进行计算
 * make cublas : 用cuBLAS方法进行计算
+* make mkl : 用oneMKL方法进行计算
 * make gen : 生成随机数文件
   
+**mkl_compute.cpp** : 用Intel oneMKL方法计算矩阵乘法
+
 **operation.h** : 头文件
 
 **plot.py** : 画折线图
@@ -78,13 +83,13 @@
 
 ### 实验结果示例：
 
-##### 16000\*16000-float-cBLAS vs cuBLAS vs OpenBLAS:
+##### 16000\*16000-float-cBLAS vs cuBLAS vs OpenBLAS vs oneMKL:
 
-![16000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/16000_compare.png)
+![16000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/float_compare.png)
 
-##### 8000\*8000-double-cuBLAS vs OpenBLAS:
+##### 8000\*8000-double-cuBLAS vs OpenBLAS vs oneMKL:
 
-![8000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/16000_compare.png)
+![8000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/double_compare.png)
 
 ##### cuBLAS:double vs float:
 
@@ -93,3 +98,7 @@
 ##### OpenBLAS:double vs float:
 
 ![OpenBLAS_compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/openBLAS.png)
+
+##### oneMKL:double vs float:
+
+![oneMKL_compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/oneMKL.png)
