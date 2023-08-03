@@ -4,7 +4,7 @@ cblas: main.cpp compute.cpp generate_random.cpp reread.cpp
 	./cblas
 
 openblas: main.cpp compute.cpp generate_random.cpp reread.cpp
-	g++ main.cpp generate_random.cpp compute.cpp reread.cpp -o openblas -lopenblas -lpthread -lgfortran -I/~/usr/local/OpenBLAS/include -L/usr/local/OpenBLAS/lib -DENABLE_FUNCTION -DCOMPUTE_BLAS
+	g++ main.cpp generate_random.cpp compute.cpp reread.cpp -o openblas -lopenblas -lpthread -lgfortran -L/usr/local/OpenBLAS/lib -DENABLE_FUNCTION -DCOMPUTE_BLAS
 	./openblas
 
 cublas: main.cpp cublas_compute.cpp generate_random.cpp reread.cpp

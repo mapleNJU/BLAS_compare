@@ -5,12 +5,14 @@
 ### 功能
 
 ##### 实验环境：
-* CPU:Intel i7-10700(16) @ 4.800GHz
-* GPU:NVIDIA GeForce GTX 1660 SUPER
+* CPU:Intel i7-10700K(16) @ 4.800GHz/Intel i9-10900K(20) @ 5.300GHz
+* GPU:NVIDIA GeForce GTX 1660 SUPER/NVIDIA GeForce GTX 2080 Ti
 * 内存：16GB
 
 ##### 功能：
-实现了在相同条件下cBLAS, OpenBLAS, cuBLAS, oneMKL在大规模矩阵相乘时的计算时间对比。在float数据类型下，两个16000\*16000的矩阵相乘时，oneMKL计算时间约18.8s，OpenBLAS的计算时间约15.6s, cuBLAS的计算时间约2.3s, 提升了约85%。而在GPU不擅长的double型数据处理中，两个8000\*8000的矩阵相乘时，oneMKL计算时间约为4.6s，OpenBLAS的计算时间约为6.5s, cuBLAS的计算时间约为6.6s(如果有好的显卡则运行时间会比OpenBLAS快)。由于cBLAS为单线程处理，在float型3000\*3000的矩阵相乘时运算时间已经达到了11.6s, 此时OpenBLAS运算时间为0.09s,cuBLAS运算时间为0.04s, 所以后续没有测试cBLAS.
+实现了在相同条件下cBLAS, OpenBLAS, cuBLAS, oneMKL在大规模矩阵相乘时的计算时间对比。在Intel-i7/1660s环境下，在float数据类型下，两个16000\*16000的矩阵相乘时，oneMKL计算时间约18.8s，OpenBLAS的计算时间约15.6s, cuBLAS的计算时间约2.3s, 提升了约85%。而在GPU不擅长的double型数据处理中，两个8000\*8000的矩阵相乘时，oneMKL计算时间约为4.6s，OpenBLAS的计算时间约为6.5s, cuBLAS的计算时间约为6.6s(如果有好的显卡则运行时间会比OpenBLAS快)。由于cBLAS为单线程处理，在float型3000\*3000的矩阵相乘时运算时间已经达到了11.6s, 此时OpenBLAS运算时间为0.09s,cuBLAS运算时间为0.04s, 所以后续没有测试cBLAS.这部分数据以100为间隔。
+
+随后又测试了在Intel-i9/2080 Ti环境下的数据，不过这部分数据是以400为间隔的，具体见results。
 
 ### 文件
 
@@ -83,9 +85,9 @@
 
 ### 实验结果示例：
 
-##### 16000\*16000-float-cBLAS vs cuBLAS vs OpenBLAS vs oneMKL:
+##### 16000\*16000-float-compare:
 
-![16000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/float_compare.png)
+![16000 compare](https://github.com/mapleNJU/BLAS_compare/blob/master/results/compare.png)
 
 ##### 8000\*8000-double-cuBLAS vs OpenBLAS vs oneMKL:
 

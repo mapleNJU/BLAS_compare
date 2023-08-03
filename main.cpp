@@ -40,7 +40,7 @@ int main()
 
     while (num <= line_M)
     {
-        std::cout << "num=" << num << " :";
+        std::cout << "num=" << num << " :" << std::endl;
         int num2 = num * num;
         std::vector<datatype> data1 = read_elements_from_file(file1, num2, gap);
         std::vector<datatype> data2 = read_elements_from_file(file2, num2, gap); // 后面调用cblas等时用这里的一维向量即可
