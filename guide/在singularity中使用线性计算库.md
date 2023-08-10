@@ -27,6 +27,7 @@ From: ubuntu:latest
     exec ./open "${@}"
 
 %apphelp OPEN
+	singularity build open.sif open.def
 	singularity run --app OPEN open.sif
 ```
 
@@ -92,5 +93,28 @@ From: ubuntu:latest
     
 %apphelp CUBLAS
 	singularity build cublas.sif cublas.def
+	singularity run --app CUBLAS --nv cublas.sif
+```
+
+或：cuBLAS:
+
+```bash
+Bootstrap: docker
+From: nvidia/cuda:12.2.0-runtime-ubuntu22.04
+
+%post
+
+%environment
+
+%apprun CUBLAS
+    # Your run script commands here
+    cd /opt/app
+    exec ./cublas
+
+%files
+    yourfile /opt/app/
+    
+%apphelp CUBLAS
+    singularity build cublas.sif cublas.def
 	singularity run --app CUBLAS --nv cublas.sif
 ```
