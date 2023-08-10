@@ -24,9 +24,9 @@ double times[line_M / 100];
 int main()
 {
 
-    std::string file1 = "Data_txt/write_1.txt";
-    std::string file2 = "Data_txt/write_2.txt";
-    std::string file_read = "Data_txt/time.txt";
+    std::string file1 = "Datas/write_1.txt";
+    std::string file2 = "Datas/write_2.txt";
+    std::string file_read = "Datas/time.txt";
 
 #ifdef GEN
     datatype min_value = -100.0;

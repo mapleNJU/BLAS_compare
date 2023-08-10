@@ -1,0 +1,30 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%labels
+    Author	:maple
+    Version	:openblas
+
+%post
+    sed -i 's/archive.ubuntu.com/mirrors.huaweicloud.com/g' /etc/apt/sources.list
+    sed -i 's/security.ubuntu.com/mirrors.huaweicloud.com/g' /etc/apt/sources.list
+    apt-get update
+    apt-get install -y g++
+    apt-get install -y make
+    apt-get install -y git
+    apt-get install -y libopenblas-dev gfortran
+    cd /opt/app/ && g++ main.cpp compute.cpp generate_random.cpp reread.cpp -o open -lopenblas -lgfortran -lpthread -DENABLE_FUNCTION -DCOMPUTE_BLAS
+
+%environment
+    export PATH=/opt/app:$PATH
+    
+%apprun OPEN
+    cd /opt/app/
+    exec ./open
+
+
+%files
+    ./app/*.cpp /opt/app/
+    ./app/operation.h /opt/app/
+    ./Data_txt/*.txt /opt/Data_txt
+

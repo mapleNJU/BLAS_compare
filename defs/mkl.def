@@ -1,0 +1,23 @@
+Bootstrap: docker
+From: intel/oneapi-basekit:devel-ubuntu22.04
+
+%labels
+    Author	:maple
+    Version	:mkl
+
+%post
+    cd /opt/app/ && g++ main.cpp mkl_compute.cpp generate_random.cpp reread.cpp -o mkl -lmkl_rt -DENABLE_FUNCTION -DCOMPUTE_BLAS
+
+%environment
+    export PATH=/opt/app:$PATH
+    
+%apprun MKL
+    cd /opt/app/
+    exec ./mkl
+
+
+%files
+    ./app/*.cpp /opt/app/
+    ./app/operation.h /opt/app/
+    ./Data_txt/*.txt /opt/Data_txt
+
